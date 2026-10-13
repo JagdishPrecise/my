@@ -6,10 +6,10 @@ Questions are grouped by discovery round. Each round is small and conversational
 
 | # | Question | Why it matters | Answer |
 |---|---|---|---|
-| 1 | What is your profession and what do you primarily do day to day? | Determines audience expectations, reference research, and whether projects are visual, technical, or strategic. | **Owner will upload a CV draft.** Profession to be read from the CV, then confirmed. |
+| 1 | What is your profession and what do you primarily do day to day? | Determines audience expectations, reference research, and whether projects are visual, technical, or strategic. | **Resolved from CV.** CTO, AI Solutions Architect, engineering leader running a delivery team; applied AI inside ERP/CRM systems. See `personal-brand-strategy.md` §1. |
 | 2 | Who is the site primarily for? (hiring managers, agency or enterprise clients, founders, collaborators, other) | Sets the conversion action, tone, and what evidence counts as credibility. | **"Anyone."** No single audience chosen. Strategy will propose a primary audience from the CV and the book-a-call goal, and ask the owner to confirm it, because a site aimed at everyone tends to persuade no one. |
 | 3 | What should a visitor do after seeing the site? (email, book a call, download a CV, follow a link) | Defines the primary CTA and whether a contact form or scheduling link is needed. | **Book a call.** Primary CTA confirmed. Scheduling provider still to be named (Round 4). |
-| 4 | How many real projects can you show, and what form does the evidence take? (live URLs, screenshots, code, write-ups, confidential work) | Decides case-study depth and whether the site is project-led or capability-led. | **To be read from the CV.** Evidence type per project (live link, screenshot, write-up, confidential) still to be confirmed after the CV is reviewed. |
+| 4 | How many real projects can you show, and what form does the evidence take? (live URLs, screenshots, code, write-ups, confidential work) | Decides case-study depth and whether the site is project-led or capability-led. | **Resolved from CV.** 4 selected projects plus an 8-industry table, all prose only. No screenshots, URLs, or named clients. Case studies will be text and diagram led unless visuals or permissions arrive (Round 3). |
 
 ## Round 2: Personality and differentiation (after Round 1)
 
@@ -19,6 +19,10 @@ Questions are grouped by discovery round. Each round is small and conversational
 - Is there a tone you want to avoid (corporate, playful, academic, salesy)?
 
 ## Round 3: Assets and constraints (before wireframes)
+
+- Can any real outcomes be stated for the four projects (documents processed, hours saved, accuracy, users)? Nothing will be invented.
+- Can any client be named, or any screenshot or live link be shown, with permission?
+- Should the WhatsApp number be published on the site, or kept to LinkedIn and the booking link?
 
 - Do you have a portrait photograph you are happy to use? Professional or candid?
 - Do you have an existing logo, wordmark, colours, or typefaces from a company or personal brand that the site should align with or deliberately stand apart from?
@@ -35,9 +39,11 @@ Questions are grouped by discovery round. Each round is small and conversational
 
 ## Blocking item
 
-**CV draft upload.** Discovery cannot continue until the owner uploads the CV draft. Once received, the next step is to extract profession, experience, skills, and project list from it, confirm them with the owner, and write `personal-brand-strategy.md` for Gate 1 approval.
+**Gate 1 approval** of `personal-brand-strategy.md` (audience order, positioning statement, tone, text-led case studies).
 
 ## Resolved
 
 - Primary CTA: book a call (Round 1, Q3).
+- Profession, experience, skills, and project list: from CV (Round 1, Q1 and Q4).
+- CV PDF contains no portrait or images; four stat tiles (25–50 engineers, 8 industries, 5 LLM families, 7-step method) are usable facts.
 
