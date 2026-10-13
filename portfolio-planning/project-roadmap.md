@@ -1,6 +1,6 @@
 # Project Roadmap
 
-**Status:** Prepared for Gate 4
+**Status:** Approved at Gate 4, 2026-10-13
 **Milestones 1 to 6 are complete as of 2026-10-13.** Milestones 7 to 11 begin only after Gate 5 authorisation.
 
 | # | Milestone | Deliverables | Depends on | Key decisions | Acceptance criteria | Owner reviews | Needs explicit approval |

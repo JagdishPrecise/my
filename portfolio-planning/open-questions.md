@@ -36,19 +36,21 @@ Still open from this round (can be answered any time before Gate 3):
 
 ## Round 4: Technical and delivery (before Phase 10)
 
-- Where will the site be hosted, and do you already own a domain?
+- Hosting: Cloudflare Pages or Netlify (Gate 4). **Domain name still needed.**
 - Calendly URL (provider confirmed at Gate 2; link still needed).
 - Email address to publish.
 - Contact form: **not needed** (Gate 2). Booking link plus email.
-- Do you want analytics? If so, which provider and how privacy-conscious should it be?
-- Do you intend to edit content yourself later? This decides whether content lives in Markdown files, a lightweight CMS, or directly in templates.
+- Analytics: none (Gate 4).
+- Content editing: Markdown in the repository (Gate 4).
 - Any accessibility, performance, or compliance requirements beyond WCAG 2.1 AA and fast load times?
 
 ## Blocking item
 
-**Gate 4 approval** of the technical implementation plan and roadmap (in preparation).
+**Gate 5 authorisation** to begin implementation.
 
 ## Resolved
+
+- Gate 4 approved 2026-10-13: Astro static output; Cloudflare Pages or Netlify free tier (domain still to be named); no analytics; content as Markdown files in the repository.
 
 - Gate 3 approved 2026-10-13: pen-ink blue accent; homepage layout as mocked; eight-section case-study skeleton; headline "AI that works inside the systems your business already runs."
 

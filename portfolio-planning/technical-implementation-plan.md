@@ -1,6 +1,6 @@
 # Technical Implementation Plan
 
-**Status:** Prepared for Gate 4
+**Status:** Approved at Gate 4, 2026-10-13. Stack: Astro static. Hosting: Cloudflare Pages or Netlify. Analytics: none. Content: Markdown in repo.
 **Starting point:** empty repository, no existing stack to preserve (see `project-audit.md`).
 
 ## 1. Principle
