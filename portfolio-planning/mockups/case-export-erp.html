@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Export ERP case study</title>
+<meta name="description" content="Mockup of case study 1 for Jagdish Chaudhary's portfolio. Not the live site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="letterhead">
+  <a class="name" href="home.html">Jagdish Chaudhary</a>
+  <nav class="nav" aria-label="Primary">
+    <a class="hide-sm" href="home.html#work" aria-current="page">Work</a>
+    <a class="hide-sm" href="home.html#about">About</a>
+    <a class="hide-sm" href="home.html#contact">Contact</a>
+    <a class="menu" href="#menu">Menu</a>
+    <a class="cta" href="home.html#contact">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="casehead">
+  <p class="mono"><span class="status">Case 01 · Export and trade · In production</span></p>
+  <h1 class="d2">An ERP where AI reads the paperwork</h1>
+  <p class="lead">An export-focused ERP covering sales orders, customers, export documentation, invoicing, inventory, shipments, finance and reporting. I led the architecture and the engineering team, and designed how AI fits into daily export operations without taking decisions away from people.</p>
+</div>
+
+<section class="spec tight" aria-label="Project details and sections 1 to 3">
+  <div class="margin sticky">
+    <dl class="meta">
+      <dt>Role</dt><dd>Architecture lead, technology lead, AI solution designer</dd>
+      <dt>Client</dt><dd>Export business <span class="mono-s">[details to supply]</span></dd>
+      <dt>Stack</dt><dd>Laravel · LLM APIs · RAG</dd>
+      <dt>Status</dt><dd>In production</dd>
+      <dt>Industry</dt><dd>Export and trade</dd>
+    </dl>
+  </div>
+  <div class="content stack">
+    <div class="sec">
+      <h2><span class="num">1</span>Context</h2>
+      <p class="ph">Owner to supply: company size, countries shipped to, approximate monthly document volume, anonymised.</p>
+    </div>
+    <div class="sec">
+      <h2><span class="num">2</span>Problem</h2>
+      <p class="body">Export operations run on documents: invoices, packing lists, purchase orders, transport documents and bills of lading. Each was keyed by hand into the ERP, slowly and with errors that surfaced at the worst moment, at customs or at payment.</p>
+    </div>
+    <div class="sec">
+      <h2><span class="num">3</span>Decisions</h2>
+      <ul>
+        <li><b>Extract into structured fields, then validate, then let a person approve.</b> Nothing reaches the ledger on the model's say-so.</li>
+        <li><b>Retrieval over company documents and ERP knowledge</b>, so staff can ask questions in plain language instead of searching folders.</li>
+        <li><b>Agents for defined workflow steps</b>, not open-ended automation.</li>
+        <li><b>Reporting, analysis and demand forecasting</b> assist decisions rather than make them.</li>
+      </ul>
+      <p class="ph">Owner to supply: options considered and rejected, and why (for example fully automatic commit, a separate AI tool outside the ERP, single-vendor lock-in).</p>
+    </div>
+  </div>
+</section>
+
+<section class="spec tight" aria-labelledby="arch-h" style="padding-bottom:0;border-bottom:0">
+  <div class="margin"><h2 id="arch-h" class="mono">4 · Architecture</h2></div>
+  <div class="content"><p class="body">Documents enter from email, scans and uploads. The extraction step produces structured fields and a summary. Validation rules check totals, references and dates. A person reviews the result and approves it. Only then does the ERP commit the order, invoice or shipment. A second path indexes ERP data and company documents for plain-language questions. A third lets agents carry out defined workflow steps.</p></div>
+</section>
+<section class="spec tight" style="padding-top:32px">
+  <figure class="panel" role="img" aria-label="Illustrative architecture: documents flow to extraction, validation, human review and ERP commit; ERP data and documents feed a retrieval index for plain-language questions; agents act on defined ERP workflow steps.">
+    <svg viewBox="0 0 1000 360" font-family="IBM Plex Mono,monospace" font-size="12" fill="none" stroke="#15171A" stroke-width="1">
+      <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L8 4L0 8z" fill="#15171A" stroke="none"/></marker></defs>
+      <rect x="20" y="40" width="160" height="60" stroke-dasharray="4 3" stroke="#8A8D88"/><text x="100" y="66" text-anchor="middle" fill="#15171A" stroke="none">Documents</text><text x="100" y="84" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">email · scans · uploads</text>
+      <path d="M180 70h40" marker-end="url(#a)"/>
+      <rect x="230" y="40" width="170" height="60"/><text x="315" y="66" text-anchor="middle" fill="#15171A" stroke="none">Extraction</text><text x="315" y="84" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">LLM · structured fields</text>
+      <path d="M400 70h40" marker-end="url(#a)"/>
+      <rect x="450" y="40" width="160" height="60"/><text x="530" y="66" text-anchor="middle" fill="#15171A" stroke="none">Validation rules</text><text x="530" y="84" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">totals · refs · dates</text>
+      <path d="M610 70h40" marker-end="url(#a)"/>
+      <rect x="660" y="40" width="130" height="60" class="pen-node" stroke="#1E3F9E" fill="#DCE2F2"/><text x="725" y="66" text-anchor="middle" fill="#1E3F9E" stroke="none" class="pen-text">☑ Human review</text><text x="725" y="84" text-anchor="middle" fill="#1E3F9E" stroke="none" font-size="11" class="pen-text">approve or correct</text>
+      <path d="M790 70h40" marker-end="url(#a)"/>
+      <rect x="840" y="40" width="140" height="60"/><text x="910" y="66" text-anchor="middle" fill="#15171A" stroke="none">ERP commit</text><text x="910" y="84" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">orders · finance</text>
+      <rect x="20" y="170" width="200" height="60" stroke-dasharray="4 3" stroke="#8A8D88"/><text x="120" y="196" text-anchor="middle" fill="#15171A" stroke="none">ERP data + documents</text><text x="120" y="214" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">policies · records</text>
+      <path d="M220 200h40" marker-end="url(#a)"/>
+      <rect x="270" y="170" width="160" height="60"/><text x="350" y="196" text-anchor="middle" fill="#15171A" stroke="none">Retrieval index</text><text x="350" y="214" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">RAG</text>
+      <path d="M430 200h40" marker-end="url(#a)"/>
+      <rect x="480" y="170" width="190" height="60"/><text x="575" y="196" text-anchor="middle" fill="#15171A" stroke="none">Plain-language Q&amp;A</text><text x="575" y="214" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">answers cite their source</text>
+      <rect x="20" y="280" width="160" height="60" stroke-dasharray="4 3" stroke="#8A8D88"/><text x="100" y="306" text-anchor="middle" fill="#15171A" stroke="none">ERP workflows</text><text x="100" y="324" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">defined steps only</text>
+      <path d="M180 310h40" marker-end="url(#a)"/><path d="M230 300h-40" marker-end="url(#a)" transform="translate(0,20)"/>
+      <rect x="230" y="280" width="170" height="60"/><text x="315" y="306" text-anchor="middle" fill="#15171A" stroke="none">Agents</text><text x="315" y="324" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">tool calls · logged</text>
+      <rect x="480" y="280" width="190" height="60"/><text x="575" y="306" text-anchor="middle" fill="#15171A" stroke="none">Reporting · forecasting</text><text x="575" y="324" text-anchor="middle" fill="#5B5F66" stroke="none" font-size="11">assists decisions</text>
+      <path d="M910 100v180H670" marker-end="url(#a)" stroke="#8A8D88"/>
+    </svg>
+    <figcaption class="cap">Illustrative architecture, simplified · to be reviewed for accuracy</figcaption>
+  </figure>
+</section>
+
+<section class="spec tight" aria-label="Sections 5 to 8">
+  <div class="margin"></div>
+  <div class="content stack">
+    <div class="sec">
+      <h2><span class="num">5</span>Where humans stay in the loop</h2>
+      <p><span class="mark"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.25"/><path d="M4 8.5l3 3 5-6.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Reviewed before commit</span></p>
+      <p class="body">Extracted data is committed only after a person approves it. Validation rules catch what they can; a person catches the rest. Forecasts inform decisions; they do not make them. The review step is a feature of the design, not a fallback.</p>
+    </div>
+    <div class="sec">
+      <h2><span class="num">6</span>What runs in production</h2>
+      <ul>
+        <li>Document extraction and generation for invoices, packing lists, purchase orders, transport documents and bills of lading.</li>
+        <li>Structured field extraction, with document outputs and summaries generated from the extracted data.</li>
+        <li>Validation rules and a human review step before extracted data is committed.</li>
+        <li>Retrieval over company documents and ERP knowledge, so staff can ask questions in plain language.</li>
+        <li>Agents that carry out ERP workflow steps.</li>
+        <li>AI-assisted reporting, data analysis and demand forecasting.</li>
+      </ul>
+      <div class="tbl"><table>
+        <thead><tr><th>Document</th><th>Extracted</th><th>Generated</th></tr></thead>
+        <tbody>
+          <tr><td>Commercial invoice</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Packing list</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Purchase order</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Transport documents</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Bill of lading</td><td>Yes</td><td>Yes</td></tr>
+        </tbody>
+      </table></div>
+      <p class="ph">Table derived from the CV. Owner to confirm which documents are extracted, generated or both.</p>
+    </div>
+    <div class="sec">
+      <h2><span class="num">7</span>Outcome</h2>
+      <p class="body">Running in daily use. Figures on volume, time saved and accuracy are not published here.</p>
+      <p class="ph">If real, verifiable figures exist, they replace the line above. Nothing is estimated.</p>
+    </div>
+    <div class="sec">
+      <h2><span class="num">8</span>Lessons</h2>
+      <p class="ph">Owner to supply two or three sentences: what you would do differently, what surprised you.</p>
+    </div>
+    <div class="next">
+      <a href="home.html#work">← All work</a>
+      <a href="home.html#work">Next: A sales assistant that cites its sources <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="closing" id="contact">
+  <div class="wrap">
+    <div class="l">
+      <p class="mono">Contact</p>
+      <h2 class="d2">Have a similar problem?</h2>
+      <p class="lead">Book a 30-minute call. We will talk about the process, the systems it touches and whether AI belongs there at all.</p>
+    </div>
+    <div class="r">
+      <p><a class="cta paper" href="#contact">Book a call</a></p>
+      <p class="mono-s" style="color:var(--rule)">or email <a href="#contact">[address to be supplied]</a></p>
+    </div>
+  </div>
+</section>
+<footer class="wrap">
+  <div>Jagdish Chaudhary · AI Solutions Architect · CTO<br>Ahmedabad, India · IST, UTC+5:30</div>
+  <div class="links"><a href="#contact">Email</a><a href="https://linkedin.com/in/jagdish-chaudhary">LinkedIn</a><a href="#contact">WhatsApp</a><a href="home.html#about">CV (PDF)</a><span>© 2026</span></div>
+</footer>
+</div>
+<div class="mock" role="group" aria-label="Mockup control: accent colour"><span>Mockup · accent</span><button type="button" id="acc-pen" aria-pressed="true">Pen ink</button><button type="button" id="acc-ox" aria-pressed="false">Oxide</button></div>
+<script>
+(function(){var r=document.documentElement,p=document.getElementById('acc-pen'),o=document.getElementById('acc-ox');
+function set(v){if(v==='oxide'){r.setAttribute('data-accent','oxide')}else{r.removeAttribute('data-accent')}
+p.setAttribute('aria-pressed',String(v!=='oxide'));o.setAttribute('aria-pressed',String(v==='oxide'));
+document.querySelectorAll('.pen-node').forEach(function(n){n.setAttribute('stroke',v==='oxide'?'#B5431E':'#1E3F9E');n.setAttribute('fill',v==='oxide'?'#F0DCD4':'#DCE2F2')});
+document.querySelectorAll('.pen-text').forEach(function(t){t.setAttribute('fill',v==='oxide'?'#B5431E':'#1E3F9E')});
+try{localStorage.setItem('accent',v)}catch(e){}}
+p.onclick=function(){set('pen')};o.onclick=function(){set('oxide')};
+try{set(localStorage.getItem('accent')||'pen')}catch(e){}})();
+</script>
+</body>
+</html>
