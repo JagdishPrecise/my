@@ -11,12 +11,18 @@ Questions are grouped by discovery round. Each round is small and conversational
 | 3 | What should a visitor do after seeing the site? (email, book a call, download a CV, follow a link) | Defines the primary CTA and whether a contact form or scheduling link is needed. | **Book a call.** Primary CTA confirmed. Scheduling provider still to be named (Round 4). |
 | 4 | How many real projects can you show, and what form does the evidence take? (live URLs, screenshots, code, write-ups, confidential work) | Decides case-study depth and whether the site is project-led or capability-led. | **Resolved from CV.** 4 selected projects plus an 8-industry table, all prose only. No screenshots, URLs, or named clients. Case studies will be text and diagram led unless visuals or permissions arrive (Round 3). |
 
-## Round 2: Personality and differentiation (after Round 1)
+## Round 2: Personality and differentiation (answered 2026-10-13)
 
-- What three words should the site make someone feel about you?
-- What do you do differently from others in your field, in your own words?
-- Are there portfolio or studio sites you admire, and what specifically do you like about them? Are there any you dislike?
-- Is there a tone you want to avoid (corporate, playful, academic, salesy)?
+| Question | Answer |
+|---|---|
+| Primary audience order (SME decision-makers, then partner agencies, then fractional CTO) | **Confirmed.** |
+| Three qualities a visitor should feel | **Precise and methodical. Senior and authoritative. Practical and business-minded.** "Approachable and hands-on" was not selected, so warmth is secondary to authority in the design. |
+| Personal name or company | **Personal name only.** Team referred to in prose as "my team"; no company logo or co-branding. |
+| Portrait photograph | **Yes, owner will upload one.** Design will plan an art-directed treatment; placeholder until it arrives. |
+
+Still open from this round (can be answered any time before Gate 3):
+- Are there portfolio or studio sites you admire or dislike, and why?
+- What do you do differently from others in your field, in your own words? (The strategy document proposes an answer; your own phrasing is better.)
 
 ## Round 3: Assets and constraints (before wireframes)
 
@@ -39,9 +45,11 @@ Questions are grouped by discovery round. Each round is small and conversational
 
 ## Blocking item
 
-**Gate 1 approval** of `personal-brand-strategy.md` (audience order, positioning statement, tone, text-led case studies).
+**Gate 2 approval** of creative direction, reference research, website strategy, and sitemap (in preparation).
 
 ## Resolved
+
+- Gate 1 approved 2026-10-13: audience order, personality, personal-name-only identity, portrait to be supplied.
 
 - Primary CTA: book a call (Round 1, Q3).
 - Profession, experience, skills, and project list: from CV (Round 1, Q1 and Q4).
