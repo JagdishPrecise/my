@@ -1,6 +1,6 @@
 # Homepage Wireframe
 
-**Status:** Prepared for Gate 3. Mockup: `portfolio-planning/mockups/home.html` (disposable, not the site).
+**Status:** Approved at Gate 3, 2026-10-13. Headline confirmed. Mockup: `portfolio-planning/mockups/home.html` (disposable, not the site).
 **Layout:** The specification layout from `design-system.md` §4. Margin column left (mono metadata), content column right.
 
 ## Section order and why

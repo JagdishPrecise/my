@@ -1,6 +1,6 @@
 # Design System: The Specification
 
-**Status:** Prepared for Gate 3
+**Status:** Approved at Gate 3, 2026-10-13, including the pen-ink accent
 **Direction:** A, approved at Gate 2, with one palette adjustment explained below.
 
 ## 0. Palette adjustment from the approved direction (needs your sign-off)

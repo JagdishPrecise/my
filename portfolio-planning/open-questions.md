@@ -46,9 +46,11 @@ Still open from this round (can be answered any time before Gate 3):
 
 ## Blocking item
 
-**Gate 3 approval** of homepage wireframe, case-study wireframe, design system, and visual mockup (in preparation).
+**Gate 4 approval** of the technical implementation plan and roadmap (in preparation).
 
 ## Resolved
+
+- Gate 3 approved 2026-10-13: pen-ink blue accent; homepage layout as mocked; eight-section case-study skeleton; headline "AI that works inside the systems your business already runs."
 
 - Gate 2 approved 2026-10-13: Direction A (The Specification); eight-page sitemap as proposed; booking via Calendly; email, LinkedIn, WhatsApp, and CV download all public.
 

@@ -1,6 +1,6 @@
 # Case Study Wireframe
 
-**Status:** Prepared for Gate 3. Mockup: `portfolio-planning/mockups/case-export-erp.html`.
+**Status:** Approved at Gate 3, 2026-10-13 (eight-section skeleton). Mockup: `portfolio-planning/mockups/case-export-erp.html`.
 
 ## Shared skeleton
 
