@@ -28,7 +28,6 @@ Still open from this round (can be answered any time before Gate 3):
 
 - Can any real outcomes be stated for the four projects (documents processed, hours saved, accuracy, users)? Nothing will be invented.
 - Can any client be named, or any screenshot or live link be shown, with permission?
-- Should the WhatsApp number be published on the site, or kept to LinkedIn and the booking link?
 
 - Do you have a portrait photograph you are happy to use? Professional or candid?
 - Do you have an existing logo, wordmark, colours, or typefaces from a company or personal brand that the site should align with or deliberately stand apart from?
@@ -38,16 +37,20 @@ Still open from this round (can be answered any time before Gate 3):
 ## Round 4: Technical and delivery (before Phase 10)
 
 - Where will the site be hosted, and do you already own a domain?
-- Do you need a working contact form, or is an email link and a scheduling link enough?
+- Calendly URL (provider confirmed at Gate 2; link still needed).
+- Email address to publish.
+- Contact form: **not needed** (Gate 2). Booking link plus email.
 - Do you want analytics? If so, which provider and how privacy-conscious should it be?
 - Do you intend to edit content yourself later? This decides whether content lives in Markdown files, a lightweight CMS, or directly in templates.
 - Any accessibility, performance, or compliance requirements beyond WCAG 2.1 AA and fast load times?
 
 ## Blocking item
 
-**Gate 2 approval** of creative direction, reference research, website strategy, and sitemap (in preparation).
+**Gate 3 approval** of homepage wireframe, case-study wireframe, design system, and visual mockup (in preparation).
 
 ## Resolved
+
+- Gate 2 approved 2026-10-13: Direction A (The Specification); eight-page sitemap as proposed; booking via Calendly; email, LinkedIn, WhatsApp, and CV download all public.
 
 - Gate 1 approved 2026-10-13: audience order, personality, personal-name-only identity, portrait to be supplied.
 

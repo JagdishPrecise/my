@@ -1,6 +1,6 @@
 # Proposed Sitemap
 
-**Status:** Prepared for Gate 2
+**Status:** Approved at Gate 2, 2026-10-13 (eight pages as proposed)
 **Pages:** 8 (Home, Work, 4 case studies, About, Contact)
 
 ```

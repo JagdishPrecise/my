@@ -11,8 +11,8 @@
 | Location | Have | Ahmedabad, India |
 | LinkedIn URL | Have | linkedin.com/in/jagdish-chaudhary |
 | Email address for the site | Need | Not in the CV |
-| Scheduling provider and link | Need | Calendly, Cal.com, Google appointment page, or other |
-| Publish WhatsApp number? | Need | Owner's decision |
+| Scheduling provider and link | Provider: Calendly (Gate 2). Link: Need | |
+| Publish WhatsApp number? | Have: yes (Gate 2) | +91 96240 64090 as click-to-chat |
 | Domain name | Need | Affects metadata and canonical URLs |
 | Portrait photograph | Need (promised) | Preferably high resolution, neutral background, natural light. Brief in `design-system.md` once direction approved |
 | Favicon / monogram | Draft | A typographic "JC" set in the display face; no logo |

@@ -1,6 +1,6 @@
 # Website Strategy
 
-**Status:** Prepared for Gate 2
+**Status:** Approved at Gate 2, 2026-10-13. Booking provider: Calendly. Contact form confirmed as not needed.
 **Depends on:** Approved brand strategy (Gate 1)
 
 ## Primary purpose

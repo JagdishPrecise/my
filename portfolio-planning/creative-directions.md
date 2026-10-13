@@ -1,6 +1,6 @@
 # Creative Directions
 
-**Status:** Prepared for Gate 2. One direction to be approved before any design work.
+**Status:** Direction A (The Specification) approved at Gate 2, 2026-10-13.
 **Inputs:** Approved brand strategy (precise and methodical, senior and authoritative, practical and business-minded; personal name only; portrait to come; evidence is text and diagrams).
 
 All three directions share the same non-negotiables: no gradients, no glow, no particle or blob backgrounds, no glassmorphism, no identical card grids, no fake numbers, full keyboard and reduced-motion support. They differ in concept, tone, and visual signature.
