@@ -7,16 +7,14 @@ const { columns = 2 } = Astro.props;
 ---
 
 <ol class:list={['steps', `cols-${columns}`]}>
-  {
-    method.map(([name, text]) => (
-      <li>
-        <div>
-          <b>{name}</b>
-          <p>{text}</p>
-        </div>
-      </li>
-    ))
-  }
+  {method.map(([name, text]) => (
+    <li>
+      <div>
+        <b>{name}</b>
+        <p>{text}</p>
+      </div>
+    </li>
+  ))}
 </ol>
 
 <style>

@@ -46,7 +46,9 @@ const ogImage = new URL('/og.png', Astro.site);
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
     <div class="wrap">
       <Letterhead path={path} />
       <main id="main">

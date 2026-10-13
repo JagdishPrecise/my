@@ -6,14 +6,12 @@ const { items } = Astro.props;
 ---
 
 <dl class="meta">
-  {
-    items.map(([k, v]) => (
-      <>
-        <dt>{k}</dt>
-        <dd>{v}</dd>
-      </>
-    ))
-  }
+  {items.map(([k, v]) => (
+    <>
+      <dt>{k}</dt>
+      <dd>{v}</dd>
+    </>
+  ))}
 </dl>
 
 <style>

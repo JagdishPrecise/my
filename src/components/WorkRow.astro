@@ -17,11 +17,17 @@ const { href, industry, title, problem, stack, status, expanded = false } = Astr
   <span class="gap" aria-hidden="true"></span>
   <span class="main">
     <span class="text">
-      <span class="title">{title} <span class="arrow">→</span></span>
+      <span class="title">
+        {title} <span class="arrow">→</span>
+      </span>
       <span class="problem">{problem}</span>
       <span class="stackline">{[...stack, status].filter(Boolean).join(' · ')}</span>
     </span>
-    {expanded && <span class="thumb" aria-hidden="true"><slot /></span>}
+    {expanded && (
+      <span class="thumb" aria-hidden="true">
+        <slot />
+      </span>
+    )}
   </span>
 </a>
 

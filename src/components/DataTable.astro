@@ -10,20 +10,29 @@ interface Props {
 const { head, rows, caption, monoCol, bleed = true } = Astro.props;
 ---
 
-<div class:list={["tbl", { bleed }]} tabindex="0" role="region" aria-label={caption ?? `Table: ${head.join(", ")}`}>
+<div
+  class:list={['tbl', { bleed }]}
+  tabindex="0"
+  role="region"
+  aria-label={caption ?? `Table: ${head.join(', ')}`}
+>
   <table>
     {caption && <caption class="mono">{caption}</caption>}
     <thead>
-      <tr>{head.map((h) => <th scope="col">{h}</th>)}</tr>
+      <tr>
+        {head.map((h) => (
+          <th scope="col">{h}</th>
+        ))}
+      </tr>
     </thead>
     <tbody>
-      {
-        rows.map((r) => (
-          <tr>
-            {r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td class:list={{ mono: i === monoCol }}>{c}</td>))}
-          </tr>
-        ))
-      }
+      {rows.map((r) => (
+        <tr>
+          {r.map((c, i) =>
+            i === 0 ? <th scope="row">{c}</th> : <td class:list={{ mono: i === monoCol }}>{c}</td>,
+          )}
+        </tr>
+      ))}
     </tbody>
   </table>
 </div>

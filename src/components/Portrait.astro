@@ -6,21 +6,32 @@ interface Props {
   size?: 'sm' | 'lg';
 }
 const { size = 'sm' } = Astro.props;
-const images = import.meta.glob('../images/portrait.{jpg,jpeg,png}', { eager: true, import: 'default' });
+const images = import.meta.glob('../images/portrait.{jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+});
 const portrait = Object.values(images)[0] as ImageMetadata | undefined;
 ---
 
-{
-  portrait ? (
-    <figure class:list={['portrait', size]}>
-      <img src={portrait.src} width={portrait.width} height={portrait.height} alt={`${site.name}, portrait`} loading={size === 'sm' ? 'eager' : 'lazy'} />
-    </figure>
-  ) : (
-    <figure class:list={['portrait', 'placeholder', size]} aria-label="Portrait placeholder">
-      <span class="mono">Portrait<br />to be supplied</span>
-    </figure>
-  )
-}
+{portrait ? (
+  <figure class:list={['portrait', size]}>
+    <img
+      src={portrait.src}
+      width={portrait.width}
+      height={portrait.height}
+      alt={`${site.name}, portrait`}
+      loading={size === 'sm' ? 'eager' : 'lazy'}
+    />
+  </figure>
+) : (
+  <figure class:list={['portrait', 'placeholder', size]} aria-label="Portrait placeholder">
+    <span class="mono">
+      Portrait
+      <br />
+      to be supplied
+    </span>
+  </figure>
+)}
 
 <style>
   .portrait {

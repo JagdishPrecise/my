@@ -6,43 +6,73 @@ import Placeholder from '../components/Placeholder.astro';
 import { site } from '../lib/site';
 ---
 
-<BaseLayout title="Contact" description="Book a call with Jagdish Chaudhary, or reach him by email, LinkedIn or WhatsApp. Based in Ahmedabad, India." path="/contact">
+<BaseLayout
+  title="Contact"
+  description="Book a call with Jagdish Chaudhary, or reach him by email, LinkedIn or WhatsApp. Based in Ahmedabad, India."
+  path="/contact"
+>
   <SpecLayout id="contact-main" noBorder>
     <Fragment slot="margin">
-      <MetaList items={[['Base', site.location], ['Time zone', site.timezone], ['Replies', 'Usually within one working day']]} />
+      <MetaList
+        items={[
+          ['Base', site.location],
+          ['Time zone', site.timezone],
+          ['Replies', 'Usually within one working day'],
+        ]}
+      />
     </Fragment>
     <div class="stack">
       <p class="mono">Contact</p>
       <h1 class="d1">Book a call.</h1>
       <p class="lead">
-        A {site.callLength} conversation about the process you have in mind, the systems it touches and whether AI belongs there at all. No deck, no pitch. Bring the problem; I will bring questions.
+        A {site.callLength} conversation about the process you have in mind, the systems it touches
+        and whether AI belongs there at all. No deck, no pitch. Bring the problem; I will bring
+        questions.
       </p>
       <p>
-        {
-          site.calendly ? (
-            <a class="cta" href={site.calendly} target="_blank" rel="noopener">
-              Choose a time
-            </a>
-          ) : (
-            <Placeholder>Calendly link to be supplied by the owner. The button appears here once it is set in src/lib/site.ts.</Placeholder>
-          )
-        }
+        {site.calendly ? (
+          <a class="cta" href={site.calendly} target="_blank" rel="noopener">
+            Choose a time
+          </a>
+        ) : (
+          <Placeholder>
+            Calendly link to be supplied by the owner. The button appears here once it is set in
+            src/lib/site.ts.
+          </Placeholder>
+        )}
       </p>
       <dl class="ways">
         <div>
           <dt class="mono">Email</dt>
-          <dd>{site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <span class="ph">Address to be supplied by the owner.</span>}</dd>
+          <dd>
+            {site.email ? (
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            ) : (
+              <span class="ph">Address to be supplied by the owner.</span>
+            )}
+          </dd>
         </div>
         <div>
           <dt class="mono">LinkedIn</dt>
-          <dd><a href={site.linkedin} rel="noopener">linkedin.com/in/jagdish-chaudhary</a></dd>
+          <dd>
+            <a href={site.linkedin} rel="noopener">
+              linkedin.com/in/jagdish-chaudhary
+            </a>
+          </dd>
         </div>
         <div>
           <dt class="mono">WhatsApp</dt>
-          <dd><a href={site.whatsapp} rel="noopener">{site.whatsappDisplay}</a></dd>
+          <dd>
+            <a href={site.whatsapp} rel="noopener">
+              {site.whatsappDisplay}
+            </a>
+          </dd>
         </div>
       </dl>
-      <p class="mono-s">Replies and calls are in Indian Standard Time, UTC+5:30. I keep slots that suit the Gulf, UK and US East Coast.</p>
+      <p class="mono-s">
+        Replies and calls are in Indian Standard Time, UTC+5:30. I keep slots that suit the Gulf, UK
+        and US East Coast.
+      </p>
     </div>
   </SpecLayout>
 </BaseLayout>

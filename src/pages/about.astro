@@ -10,8 +10,14 @@ import Placeholder from '../components/Placeholder.astro';
 import { site } from '../lib/site';
 
 const tech = [
-  ['LLM providers and models', 'OpenAI, Anthropic Claude, Google Gemini; open-source model families including Llama and Qwen'],
-  ['AI architecture', 'RAG and knowledge retrieval, LLM API integration, AI agents and tool calling, Model Context Protocol (MCP), structured document extraction, AI-assisted reporting and forecasting'],
+  [
+    'LLM providers and models',
+    'OpenAI, Anthropic Claude, Google Gemini; open-source model families including Llama and Qwen',
+  ],
+  [
+    'AI architecture',
+    'RAG and knowledge retrieval, LLM API integration, AI agents and tool calling, Model Context Protocol (MCP), structured document extraction, AI-assisted reporting and forecasting',
+  ],
   ['Backend and languages', 'Laravel, PHP, Node.js, Python'],
   ['Data', 'Relational databases, document and knowledge stores for retrieval'],
   ['Integrations', 'REST APIs, CRM and ERP integrations, third-party business systems'],
@@ -21,11 +27,23 @@ const lead = [
   ['Specs before code', 'Written SRS/PRD and fixed architecture rules before development starts.'],
   ['Phased delivery', 'Large scopes split into phases that ship value early and fit the budget.'],
   ['Engineering standards', 'Layered architecture, audit trails, automated tests and code review.'],
-  ['Data and money integrity', 'Tenant isolation, immutable financial records, payment-gateway webhooks as the source of truth.'],
-  ['AI-assisted engineering', 'AI coding tools with documented project rules for faster, consistent delivery.'],
-  ['Client ownership', 'Scope, estimates, budget negotiation and change requests handled directly.'],
+  [
+    'Data and money integrity',
+    'Tenant isolation, immutable financial records, payment-gateway webhooks as the source of truth.',
+  ],
+  [
+    'AI-assisted engineering',
+    'AI coding tools with documented project rules for faster, consistent delivery.',
+  ],
+  [
+    'Client ownership',
+    'Scope, estimates, budget negotiation and change requests handled directly.',
+  ],
   ['Partner delivery', 'Partner agencies own strategy while my team owns technical execution.'],
-  ['Parallel portfolio', 'Several client and product builds run at once, each with a clear owner and plan.'],
+  [
+    'Parallel portfolio',
+    'Several client and product builds run at once, each with a clear owner and plan.',
+  ],
 ];
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -38,59 +56,92 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title="About" description="How Jagdish Chaudhary works: a seven-step method from discovery to support, how he leads engineering teams of 25 to 50, and the technology he builds with." path="/about" jsonLd={jsonLd}>
+<BaseLayout
+  title="About"
+  description="How Jagdish Chaudhary works: a seven-step method from discovery to support, how he leads engineering teams of 25 to 50, and the technology he builds with."
+  path="/about"
+  jsonLd={jsonLd}
+>
   <SpecLayout id="profile">
     <Fragment slot="margin">
       <Portrait size="lg" />
-      <MetaList items={[['Base', site.location], ['Time zone', site.timezone], ['Education', 'Master of Computer, 2017']]} />
+      <MetaList
+        items={[
+          ['Base', site.location],
+          ['Time zone', site.timezone],
+          ['Education', 'Master of Computer, 2017'],
+        ]}
+      />
     </Fragment>
     <div class="stack">
       <p class="mono">About</p>
       <h1 class="d1">I turn business problems into working, production-grade software.</h1>
       <div class="prose">
         <p class="lead">
-          I am a technology leader and AI Solutions Architect. I have led engineering teams of 25 to 50 people and owned technology strategy from the first discovery call through architecture, build and production deployment.
+          I am a technology leader and AI Solutions Architect. I have led engineering teams of 25 to
+          50 people and owned technology strategy from the first discovery call through
+          architecture, build and production deployment.
         </p>
         <p>
-          My hands-on focus is applied AI: LLM integration, Retrieval-Augmented Generation, AI agents, document extraction and workflow automation that connects to the ERP, CRM and internal systems a business already runs. I am as comfortable in a discovery workshop or an ROI discussion as in an architecture or infrastructure review.
+          My hands-on focus is applied AI: LLM integration, Retrieval-Augmented Generation, AI
+          agents, document extraction and workflow automation that connects to the ERP, CRM and
+          internal systems a business already runs. I am as comfortable in a discovery workshop or
+          an ROI discussion as in an architecture or infrastructure review.
         </p>
         <p>
-          Today I lead a development and delivery team building web, AI and automation projects for international clients across export, real estate, financial services, mobility, EdTech, events and SaaS.
+          Today I lead a development and delivery team building web, AI and automation projects for
+          international clients across export, real estate, financial services, mobility, EdTech,
+          events and SaaS.
         </p>
-        <Placeholder>Optional, from the owner: one or two lines about life outside work, so the page reads as a person rather than a profile.</Placeholder>
+        <Placeholder>
+          Optional, from the owner: one or two lines about life outside work, so the page reads as a
+          person rather than a profile.
+        </Placeholder>
       </div>
-      <p><a href={site.cvPath}>Download the CV (PDF) <span class="arrow">→</span></a></p>
+      <p>
+        <a href={site.cvPath}>
+          Download the CV (PDF) <span class="arrow">→</span>
+        </a>
+      </p>
     </div>
   </SpecLayout>
 
   <SpecLayout id="method" label="How I work with clients">
     <div class="stack">
-      <p class="lead">I build technology around the business need, not around the latest tool. Every engagement follows the same path from problem to production.</p>
+      <p class="lead">
+        I build technology around the business need, not around the latest tool. Every engagement
+        follows the same path from problem to production.
+      </p>
       <MethodSteps />
     </div>
   </SpecLayout>
 
   <SpecLayout id="lead" label="How I lead teams and projects">
     <dl class="defs">
-      {
-        lead.map(([k, v]) => (
-          <div>
-            <dt>{k}</dt>
-            <dd>{v}</dd>
-          </div>
-        ))
-      }
+      {lead.map(([k, v]) => (
+        <div>
+          <dt>{k}</dt>
+          <dd>{v}</dd>
+        </div>
+      ))}
     </dl>
   </SpecLayout>
 
   <SpecLayout id="delivery" label="Leadership and delivery">
     <ul class="plain">
-      <li>Led engineering teams of 25 to 50 people across different team and project structures.</li>
+      <li>
+        Led engineering teams of 25 to 50 people across different team and project structures.
+      </li>
       <li>Owned architecture and technical strategy across software delivery initiatives.</li>
       <li>Set direction on cloud infrastructure, DevOps, security, scalability and performance.</li>
       <li>Combined hands-on technical work with team leadership and implementation oversight.</li>
-      <li>Managed client discovery, solution consulting, estimation, budgeting and product decisions.</li>
-      <li>Shared production operations with engineering and DevOps teams, owning architecture decisions and escalations.</li>
+      <li>
+        Managed client discovery, solution consulting, estimation, budgeting and product decisions.
+      </li>
+      <li>
+        Shared production operations with engineering and DevOps teams, owning architecture
+        decisions and escalations.
+      </li>
     </ul>
   </SpecLayout>
 

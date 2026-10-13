@@ -3,14 +3,12 @@ import { numerals } from '../lib/site';
 ---
 
 <ul class="nums" aria-label="Scale and experience">
-  {
-    numerals.map(({ n, label }) => (
-      <li>
-        <span class="n">{n}</span>
-        <span class="c">{label}</span>
-      </li>
-    ))
-  }
+  {numerals.map(({ n, label }) => (
+    <li>
+      <span class="n">{n}</span>
+      <span class="c">{label}</span>
+    </li>
+  ))}
 </ul>
 
 <style>

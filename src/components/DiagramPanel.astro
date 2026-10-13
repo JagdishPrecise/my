@@ -7,10 +7,15 @@ interface Props {
   caption?: string;
   bleed?: boolean;
 }
-const { svg, alt, bleed = true, caption = 'Illustrative architecture, simplified · to be reviewed for accuracy' } = Astro.props;
+const {
+  svg,
+  alt,
+  bleed = true,
+  caption = 'Illustrative architecture, simplified · to be reviewed for accuracy',
+} = Astro.props;
 ---
 
-<figure class:list={["panel", { bleed }]}>
+<figure class:list={['panel', { bleed }]}>
   <div class="scroll" tabindex="0" role="img" aria-label={alt} set:html={svg} />
   <figcaption class="cap">{caption}</figcaption>
   <p class="alt">{alt}</p>

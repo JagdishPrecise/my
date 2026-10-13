@@ -8,18 +8,16 @@ const { a, b } = Astro.props;
 ---
 
 <div class="cols">
-  {
-    [a, b].map((c) => (
-      <div>
-        <h3 class="mono">{c.title}</h3>
-        <ul>
-          {c.items.map((i) => (
-            <li>{i}</li>
-          ))}
-        </ul>
-      </div>
-    ))
-  }
+  {[a, b].map((c) => (
+    <div>
+      <h3 class="mono">{c.title}</h3>
+      <ul>
+        {c.items.map((i) => (
+          <li>{i}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
 </div>
 
 <style>

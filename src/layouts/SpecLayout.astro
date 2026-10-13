@@ -12,9 +12,17 @@ interface Props {
 const { id, label, tight = false, sticky = false, class: cls = '', noBorder = false } = Astro.props;
 ---
 
-<section id={id} class:list={['spec', { tight, 'no-border': noBorder }, cls]} aria-labelledby={label ? `${id}-h` : undefined}>
+<section
+  id={id}
+  class:list={['spec', { tight, 'no-border': noBorder }, cls]}
+  aria-labelledby={label ? `${id}-h` : undefined}
+>
   <div class:list={['margin', { sticky }]}>
-    {label && <h2 id={`${id}-h`} class="mono">{label}</h2>}
+    {label && (
+      <h2 id={`${id}-h`} class="mono">
+        {label}
+      </h2>
+    )}
     <slot name="margin" />
   </div>
   <div class="content">

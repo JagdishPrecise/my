@@ -8,21 +8,29 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
 ---
 
 <header class="letterhead">
-  <a class="name" href="/">{site.name}</a>
+  <a class="name" href="/">
+    {site.name}
+  </a>
   <nav class="nav" aria-label="Primary">
     <ul class="links" id="site-menu">
-      {
-        nav.map((item) => (
-          <li>
-            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-              {item.label}
-            </a>
-          </li>
-        ))
-      }
+      {nav.map((item) => (
+        <li>
+          <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        </li>
+      ))}
     </ul>
-    <button class="menu" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
-    <a class="cta" href={site.calendly ?? '/contact'} {...site.calendly ? { target: '_blank', rel: 'noopener' } : {}}>Book a call</a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="site-menu">
+      Menu
+    </button>
+    <a
+      class="cta"
+      href={site.calendly ?? '/contact'}
+      {...(site.calendly ? { target: '_blank', rel: 'noopener' } : {})}
+    >
+      Book a call
+    </a>
   </nav>
 </header>
 

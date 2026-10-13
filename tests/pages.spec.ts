@@ -14,7 +14,10 @@ for (const r of routes) {
     expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy();
     expect(await page.locator('link[rel="canonical"]').count()).toBe(1);
     // no horizontal scroll
-    const [sw, cw] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+    const [sw, cw] = await page.evaluate(() => [
+      document.documentElement.scrollWidth,
+      document.documentElement.clientWidth,
+    ]);
     expect(sw).toBeLessThanOrEqual(cw);
     // the primary action is reachable from every page
     await expect(page.getByRole('link', { name: 'Book a call' }).first()).toBeVisible();
