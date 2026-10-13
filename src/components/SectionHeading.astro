@@ -1,0 +1,25 @@
+---
+/** Numbered heading for case-study sections. Numbers are used because a specification's sections are a real sequence. */
+interface Props {
+  n: number | string;
+  text: string;
+  id?: string;
+}
+const { n, text, id } = Astro.props;
+---
+
+<h2 class="h sec-h" id={id}><span class="num">{n}</span>{text}</h2>
+
+<style>
+  .sec-h {
+    display: flex;
+    gap: var(--s2);
+    align-items: baseline;
+  }
+  .num {
+    font-family: var(--mono);
+    font-size: var(--label);
+    letter-spacing: 0.08em;
+    color: var(--graphite);
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkRow from '../../components/WorkRow.astro';
+import DataTable from '../../components/DataTable.astro';
+import ClosingCall from '../../components/ClosingCall.astro';
+import { industries } from '../../lib/site';
+
+const entries = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Work" description="Four case studies in applied AI and enterprise architecture, and the industries Jagdish Chaudhary has led technology for." path="/work">
+  <div class="head">
+    <p class="mono">Work</p>
+    <h1 class="d1">Four projects, told as decisions.</h1>
+    <p class="lead">Each study opens with the business problem, then the choices made, the architecture, and where a person stays in the loop. Figures appear only where they can be verified.</p>
+  </div>
+
+  <div class="rows">
+    {
+      entries.map((e) => (
+        <WorkRow
+          href={`/work/${e.id}`}
+          industry={e.data.industry}
+          title={e.data.title}
+          problem={e.data.problem}
+          stack={e.data.stack}
+          status={e.data.status}
+        />
+      ))
+    }
+  </div>
+
+  <section class="industries" aria-labelledby="ind-h">
+    <div class="seehead">
+      <h2 id="ind-h" class="mono">Technology leadership across industries</h2>
+      <p class="mono-s">On each build I owned the architecture, set engineering standards, planned the work and managed the client from scope to launch.</p>
+    </div>
+    <DataTable head={['Industry', 'What was built', 'What I led', 'Stack']} rows={industries} monoCol={3} bleed={false} />
+  </section>
+
+  <ClosingCall slot="after" />
+</BaseLayout>
+
+<style>
+  .head {
+    padding-block: var(--s6) var(--s5);
+    display: grid;
+    gap: var(--s3);
+    max-width: 62ch;
+  }
+  .rows {
+    border-bottom: 1px solid var(--rule);
+  }
+  .industries {
+    padding-block: var(--section);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    gap: var(--s4);
+  }
+  .seehead {
+    display: grid;
+    gap: var(--s2);
+    max-width: 68ch;
+  }
+</style>

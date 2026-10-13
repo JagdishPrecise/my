@@ -1,0 +1,79 @@
+---
+order: 2
+title: A sales assistant that cites its sources
+industry: Real estate, Dubai
+problem: Buyer questions answered from brochures and FAQs, with the source shown and qualified leads captured in the CRM.
+role: AI solution architect, integration designer
+client: Real estate business, Dubai
+stack: [RAG, LLM, CRM integration]
+status: In production
+emphasis: trust
+diagram: real-estate-rag.svg
+diagramAlt: 'A buyer enquiry is answered from a retrieval index built on brochures, FAQs and documents. Each answer shows its source. The assistant asks qualifying questions, captures the lead in the CRM, and hands qualified leads to the sales team, who take over the conversation.'
+featured: true
+description: Case study. A retrieval-based sales assistant for a Dubai real estate business that answers buyer questions with cited sources and hands qualified leads to people.
+---
+import DiagramPanel from '../../components/DiagramPanel.astro';
+import ReviewMark from '../../components/ReviewMark.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import DataTable from '../../components/DataTable.astro';
+import Sample from '../../components/Sample.astro';
+import Columns from '../../components/Columns.astro';
+import diagram from '../../diagrams/real-estate-rag.svg?raw';
+
+
+## 1. Context
+
+A real estate business in Dubai whose sales team answered buyer questions by searching brochures, documents and FAQs by hand.
+
+<Placeholder>Owner to supply: size of the sales team, number of projects or properties covered, the CRM in use, anonymised as needed.</Placeholder>
+
+## 2. Problem
+
+Every buyer question meant a manual search through brochures and FAQs. Answers were slow, inconsistent between salespeople, and the search itself took time away from selling.
+
+## 3. Decisions
+
+- **Retrieval over the documents the team already trusted**, not a model answering from general knowledge.
+- **Every answer shows its source.** A salesperson or a buyer can check the brochure page behind a claim.
+- **The assistant qualifies, people close.** It asks qualifying questions and captures the lead; a person takes over the conversation.
+- **Lead capture goes straight into the CRM**, so nothing lives only in a chat log.
+
+<Placeholder>Owner to supply: options rejected (for example a general chatbot without retrieval, or one that could quote prices or availability without a source).</Placeholder>
+
+## 4. Architecture
+
+Brochures, FAQs and documents are indexed for retrieval. A buyer enquiry is matched against that index and answered in natural language, with the source shown beside the answer. The assistant asks qualifying questions, writes the lead into the CRM and hands qualified leads to the sales team.
+
+<DiagramPanel svg={diagram} alt={frontmatter.diagramAlt} />
+
+## 5. Where humans stay in the loop
+
+<ReviewMark label="Sales team takes over" />
+
+The assistant never commits the business to anything. It answers from documents, shows where the answer came from, and passes qualified buyers to a person. The handoff is the point of the design.
+
+## 6. What runs in production
+
+- Retrieves relevant answers from company documents, property brochures and FAQs.
+- Responds in natural language and shows the source behind each answer.
+- Handles customer enquiries and asks qualifying questions.
+- Captures lead details in the CRM and hands qualified leads to the sales team.
+
+<Sample>
+  <span slot="q">Does the two-bedroom in the north tower come with parking?</span>
+  <span slot="a">Yes. Two-bedroom units in the north tower include one allocated parking space. A second space can be purchased separately.</span>
+  <span slot="src">Source: North Tower brochure, page 14, "Parking and amenities"</span>
+</Sample>
+
+<Placeholder>Example exchange written to show the citation behaviour. Owner may replace it with a real, anonymised one.</Placeholder>
+
+## 7. Outcome
+
+In production with the sales team. Figures on response time, lead volume or conversion are not published here.
+
+<Placeholder>If real, verifiable figures exist, they replace the line above.</Placeholder>
+
+## 8. Lessons
+
+<Placeholder>Owner to supply two or three sentences.</Placeholder>

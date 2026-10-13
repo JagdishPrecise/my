@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpecLayout from '../layouts/SpecLayout.astro';
+import MetaList from '../components/MetaList.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Contact" description="Book a call with Jagdish Chaudhary, or reach him by email, LinkedIn or WhatsApp. Based in Ahmedabad, India." path="/contact">
+  <SpecLayout id="contact-main" noBorder>
+    <Fragment slot="margin">
+      <MetaList items={[['Base', site.location], ['Time zone', site.timezone], ['Replies', 'Usually within one working day']]} />
+    </Fragment>
+    <div class="stack">
+      <p class="mono">Contact</p>
+      <h1 class="d1">Book a call.</h1>
+      <p class="lead">
+        A {site.callLength} conversation about the process you have in mind, the systems it touches and whether AI belongs there at all. No deck, no pitch. Bring the problem; I will bring questions.
+      </p>
+      <p>
+        {
+          site.calendly ? (
+            <a class="cta" href={site.calendly} target="_blank" rel="noopener">
+              Choose a time
+            </a>
+          ) : (
+            <Placeholder>Calendly link to be supplied by the owner. The button appears here once it is set in src/lib/site.ts.</Placeholder>
+          )
+        }
+      </p>
+      <dl class="ways">
+        <div>
+          <dt class="mono">Email</dt>
+          <dd>{site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <span class="ph">Address to be supplied by the owner.</span>}</dd>
+        </div>
+        <div>
+          <dt class="mono">LinkedIn</dt>
+          <dd><a href={site.linkedin} rel="noopener">linkedin.com/in/jagdish-chaudhary</a></dd>
+        </div>
+        <div>
+          <dt class="mono">WhatsApp</dt>
+          <dd><a href={site.whatsapp} rel="noopener">{site.whatsappDisplay}</a></dd>
+        </div>
+      </dl>
+      <p class="mono-s">Replies and calls are in Indian Standard Time, UTC+5:30. I keep slots that suit the Gulf, UK and US East Coast.</p>
+    </div>
+  </SpecLayout>
+</BaseLayout>
+
+<style>
+  .stack {
+    display: grid;
+    gap: var(--s4);
+  }
+  .ways {
+    display: grid;
+    gap: 0;
+    max-width: 60ch;
+  }
+  .ways > div {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--s3);
+    padding-block: var(--s2);
+    border-top: 1px solid var(--rule);
+  }
+  .ways > div:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .ways dd {
+    margin: 0;
+  }
+  .ways dd a {
+    padding-block: 8px;
+    display: inline-block;
+  }
+  @media (max-width: 599px) {
+    .ways > div {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>

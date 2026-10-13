@@ -1,0 +1,95 @@
+---
+/** One entry in a work list. `expanded` adds the diagram thumbnail slot for the lead entry. */
+interface Props {
+  href: string;
+  industry: string;
+  title: string;
+  problem: string;
+  stack: string[];
+  status?: string;
+  expanded?: boolean;
+}
+const { href, industry, title, problem, stack, status, expanded = false } = Astro.props;
+---
+
+<a class:list={['row', { expanded }]} href={href}>
+  <span class="ind">{industry}</span>
+  <span class="gap" aria-hidden="true"></span>
+  <span class="main">
+    <span class="text">
+      <span class="title">{title} <span class="arrow">→</span></span>
+      <span class="problem">{problem}</span>
+      <span class="stackline">{[...stack, status].filter(Boolean).join(' · ')}</span>
+    </span>
+    {expanded && <span class="thumb" aria-hidden="true"><slot /></span>}
+  </span>
+</a>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 8fr;
+    gap: var(--s3);
+    padding-block: var(--s4);
+    border-top: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+  }
+  .ind {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    padding-top: var(--s1);
+  }
+  .main {
+    display: grid;
+    gap: var(--s4);
+    min-width: 0;
+  }
+  .expanded .main {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+  }
+  .text {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+  }
+  .title {
+    font-family: var(--serif);
+    font-size: var(--h);
+    line-height: 1.2;
+    transition: color 0.12s;
+  }
+  .row:hover .title {
+    color: var(--pen);
+  }
+  .problem {
+    max-width: 60ch;
+  }
+  .stackline {
+    font-family: var(--mono);
+    font-size: var(--label);
+    color: var(--graphite);
+  }
+  .thumb {
+    background: var(--paper-2);
+    padding: var(--s2);
+    display: block;
+  }
+  @media (max-width: 899px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .gap,
+    .thumb {
+      display: none;
+    }
+    .expanded .main {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

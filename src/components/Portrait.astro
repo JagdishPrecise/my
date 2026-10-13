@@ -1,0 +1,57 @@
+---
+/** Portrait figure with a designed placeholder state until the owner supplies a photo.
+ *  When src/images/portrait.jpg exists, swap the placeholder for <Image>. */
+import { site } from '../lib/site';
+interface Props {
+  size?: 'sm' | 'lg';
+}
+const { size = 'sm' } = Astro.props;
+const images = import.meta.glob('../images/portrait.{jpg,jpeg,png}', { eager: true, import: 'default' });
+const portrait = Object.values(images)[0] as ImageMetadata | undefined;
+---
+
+{
+  portrait ? (
+    <figure class:list={['portrait', size]}>
+      <img src={portrait.src} width={portrait.width} height={portrait.height} alt={`${site.name}, portrait`} loading={size === 'sm' ? 'eager' : 'lazy'} />
+    </figure>
+  ) : (
+    <figure class:list={['portrait', 'placeholder', size]} aria-label="Portrait placeholder">
+      <span class="mono">Portrait<br />to be supplied</span>
+    </figure>
+  )
+}
+
+<style>
+  .portrait {
+    width: 160px;
+    aspect-ratio: 1;
+    margin: 0;
+    overflow: hidden;
+  }
+  .portrait.lg {
+    width: min(100%, 480px);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.85) sepia(0.06);
+  }
+  .placeholder {
+    background: var(--paper-2);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 12px;
+  }
+  @media (max-width: 899px) {
+    .portrait {
+      width: 120px;
+    }
+    .portrait.lg {
+      width: min(100%, 320px);
+    }
+  }
+</style>

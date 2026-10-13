@@ -1,0 +1,50 @@
+---
+/** Two short parallel lists, used where a project has two distinct capability sets. */
+interface Props {
+  a: { title: string; items: string[] };
+  b: { title: string; items: string[] };
+}
+const { a, b } = Astro.props;
+---
+
+<div class="cols">
+  {
+    [a, b].map((c) => (
+      <div>
+        <h3 class="mono">{c.title}</h3>
+        <ul>
+          {c.items.map((i) => (
+            <li>{i}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s4);
+    max-width: 68ch;
+  }
+  .cols > div {
+    display: grid;
+    gap: var(--s2);
+    align-content: start;
+  }
+  ul {
+    padding-left: 20px;
+    display: grid;
+    gap: var(--s1);
+  }
+  li::marker {
+    color: var(--graphite);
+  }
+  @media (max-width: 599px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

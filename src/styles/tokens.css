@@ -1,0 +1,51 @@
+/* Design tokens for "The Specification" (portfolio-planning/design-system.md).
+   Single light theme by design: the site is a printed document. */
+:root {
+  --paper: #f2f1ed;
+  --paper-2: #e8e7e1;
+  --ink: #15171a;
+  --graphite: #5b5f66;
+  --rule: #c9cac4;
+  --pen: #1e3f9e;
+  --pen-wash: #dce2f2;
+  --deep: #1e2024;
+
+  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --sans: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* type scale (desktop / phone handled with clamp) */
+  --d1: clamp(2.75rem, 6.2vw, 4.75rem); /* 44 → 76 */
+  --d2: clamp(2rem, 3.6vw, 2.75rem); /* 32 → 44 */
+  --h: clamp(1.5rem, 2.2vw, 1.75rem); /* 24 → 28 */
+  --lead: clamp(1.125rem, 1.6vw, 1.25rem); /* 18 → 20 */
+  --body: clamp(1rem, 1.3vw, 1.0625rem); /* 16 → 17 */
+  --small: 0.9375rem;
+  --label: 0.8125rem;
+
+  /* spacing, 8px base */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s5: 48px;
+  --s6: 64px;
+  --s7: 96px;
+  --s8: 128px;
+
+  --max: 1200px;
+  --gutter: 24px;
+  --section: var(--s7);
+
+  color-scheme: light;
+}
+@media (max-width: 899px) {
+  :root {
+    --section: var(--s6);
+  }
+}
+@media (max-width: 599px) {
+  :root {
+    --gutter: 16px;
+  }
+}

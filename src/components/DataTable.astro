@@ -1,0 +1,75 @@
+---
+interface Props {
+  head: readonly string[];
+  rows: ReadonlyArray<ReadonlyArray<string>>;
+  caption?: string;
+  /** Column index to render in mono (for stacks and codes) */
+  monoCol?: number;
+  bleed?: boolean;
+}
+const { head, rows, caption, monoCol, bleed = true } = Astro.props;
+---
+
+<div class:list={["tbl", { bleed }]} tabindex="0" role="region" aria-label={caption ?? `Table: ${head.join(", ")}`}>
+  <table>
+    {caption && <caption class="mono">{caption}</caption>}
+    <thead>
+      <tr>{head.map((h) => <th scope="col">{h}</th>)}</tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr>
+            {r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td class:list={{ mono: i === monoCol }}>{c}</td>))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .tbl {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--small);
+    min-width: 640px;
+  }
+  caption {
+    text-align: left;
+    padding-bottom: var(--s2);
+  }
+  thead th {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    text-align: left;
+    background: var(--paper-2);
+    padding: 10px 12px;
+    font-weight: 500;
+  }
+  td,
+  tbody th {
+    padding: 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400;
+  }
+  tbody th {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  td.mono {
+    font-family: var(--mono);
+    font-size: var(--label);
+    color: var(--graphite);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+</style>

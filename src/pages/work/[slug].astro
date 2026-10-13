@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SpecLayout from '../../layouts/SpecLayout.astro';
+import MetaList from '../../components/MetaList.astro';
+import ClosingCall from '../../components/ClosingCall.astro';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return entries.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: entries[(i + 1) % entries.length] },
+  }));
+}
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const code = `Case ${String(d.order).padStart(2, '0')}`;
+---
+
+<BaseLayout title={d.title} description={d.description} path={`/work/${entry.id}`}>
+  <div class="casehead">
+    <p class="mono"><span class:list={['status', { dev: d.status === 'In development' }]}>{code} · {d.industry} · {d.status}</span></p>
+    <h1 class="d2">{d.title}</h1>
+  </div>
+
+  <SpecLayout id="study" sticky tight noBorder>
+    <Fragment slot="margin">
+      <MetaList items={[['Role', d.role], ['Client', d.client], ['Stack', d.stack.join(' · ')], ['Status', d.status], ['Industry', d.industry]]} />
+    </Fragment>
+    <article class="prose study">
+      <Content />
+    </article>
+  </SpecLayout>
+
+  <nav class="next" aria-label="Case studies">
+    <a href="/work">← All work</a>
+    <a href={`/work/${next.id}`}>Next: {next.data.title} <span class="arrow">→</span></a>
+  </nav>
+
+  <ClosingCall slot="after" heading="Have a similar problem?" />
+</BaseLayout>
+
+<style>
+  .casehead {
+    padding-block: var(--s6) var(--s5);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    gap: var(--s3);
+    max-width: 62ch;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s1);
+  }
+  .status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--pen);
+    display: inline-block;
+  }
+  .status.dev::before {
+    background: none;
+    border: 1px solid var(--pen);
+  }
+  .study {
+    gap: var(--s3);
+  }
+  .study :global(h2) {
+    margin-top: var(--s4);
+  }
+  .study :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .study :global(.panel),
+  .study :global(.tbl.bleed) {
+    margin-block: var(--s3);
+  }
+  .next {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s3);
+    flex-wrap: wrap;
+    border-top: 1px solid var(--rule);
+    padding-block: var(--s4) var(--s7);
+  }
+</style>

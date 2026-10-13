@@ -1,0 +1,84 @@
+---
+/** Full-bleed panel for an inline SVG schematic. The SVG is passed as a raw string so it inherits
+ *  the CSS tokens and can draw its strokes once on first view. */
+interface Props {
+  svg: string;
+  alt: string;
+  caption?: string;
+  bleed?: boolean;
+}
+const { svg, alt, bleed = true, caption = 'Illustrative architecture, simplified · to be reviewed for accuracy' } = Astro.props;
+---
+
+<figure class:list={["panel", { bleed }]}>
+  <div class="scroll" tabindex="0" role="img" aria-label={alt} set:html={svg} />
+  <figcaption class="cap">{caption}</figcaption>
+  <p class="alt">{alt}</p>
+</figure>
+
+<style>
+  .panel {
+    background: var(--paper-2);
+    padding: var(--s4) var(--s3);
+    display: grid;
+    gap: var(--s2);
+    min-width: 0;
+  }
+  .scroll {
+    overflow-x: auto;
+  }
+  .scroll :global(svg) {
+    pointer-events: none;
+  }
+  .scroll :global(svg) {
+    display: block;
+    min-width: 900px;
+    width: 100%;
+    height: auto;
+    font-family: var(--mono);
+  }
+  .cap {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+  .alt {
+    font-size: var(--small);
+    color: var(--graphite);
+    max-width: 68ch;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll :global(.draw) {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+    }
+    .panel.seen :global(.draw) {
+      animation: draw 0.6s ease-out forwards;
+    }
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+</style>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const panels = document.querySelectorAll<HTMLElement>('.panel');
+  if (reduce || !('IntersectionObserver' in window)) {
+    panels.forEach((p) => p.classList.add('seen'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('seen');
+          io.unobserve(e.target);
+        }
+      });
+    });
+    panels.forEach((p) => io.observe(p));
+  }
+</script>

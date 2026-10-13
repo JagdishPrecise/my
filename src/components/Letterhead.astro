@@ -1,0 +1,123 @@
+---
+import { nav, site } from '../lib/site';
+interface Props {
+  path: string;
+}
+const { path } = Astro.props;
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class="letterhead">
+  <a class="name" href="/">{site.name}</a>
+  <nav class="nav" aria-label="Primary">
+    <ul class="links" id="site-menu">
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <a class="cta" href={site.calendly ?? '/contact'} {...site.calendly ? { target: '_blank', rel: 'noopener' } : {}}>Book a call</a>
+  </nav>
+</header>
+
+<style>
+  .letterhead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    padding-block: var(--s3);
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .name {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .links a {
+    text-decoration: none;
+    font-size: 1rem;
+    padding-block: 10px; /* 44px target */
+    display: inline-block;
+  }
+  .links a[aria-current] {
+    text-decoration: underline;
+    text-decoration-color: var(--pen);
+    text-underline-offset: 0.3em;
+  }
+  .menu {
+    display: none;
+    font: inherit;
+    font-size: 1rem;
+    background: none;
+    border: 0;
+    padding: 10px 0;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  .menu[aria-expanded='true'] {
+    color: var(--pen);
+  }
+  @media (max-width: 599px) {
+    .nav {
+      gap: var(--s2);
+    }
+    .menu {
+      display: inline-block;
+    }
+    .links {
+      display: none;
+      flex-basis: 100%;
+      order: 3;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      margin-top: var(--s2);
+      padding-top: var(--s1);
+    }
+    .links.open {
+      display: flex;
+    }
+    .letterhead {
+      row-gap: 0;
+    }
+    .nav {
+      flex-wrap: wrap;
+      flex: 1;
+      justify-content: flex-end;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.letterhead .menu');
+  const list = document.getElementById('site-menu');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    list?.classList.toggle('open', !open);
+  });
+</script>

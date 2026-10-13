@@ -1,0 +1,75 @@
+---
+/** The one inverted block on each page: the end of the document and the call to action. */
+import { site } from '../lib/site';
+interface Props {
+  heading?: string;
+}
+const { heading = 'Have a process AI should be inside?' } = Astro.props;
+const bookHref = site.calendly ?? '/contact';
+---
+
+<section class="closing" id="book" aria-labelledby="closing-h">
+  <div class="wrap">
+    <div class="l">
+      <p class="mono">Contact</p>
+      <h2 id="closing-h" class="d2">{heading}</h2>
+      <p class="lead">
+        Book a {site.callLength} call. We will talk about the process, the systems it touches and whether AI belongs there at all.
+      </p>
+    </div>
+    <div class="r">
+      <p><a class="cta paper" href={bookHref} {...site.calendly ? { target: '_blank', rel: 'noopener' } : {}}>Book a call</a></p>
+      <p class="mono-s alt">
+        or email {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <a href="/contact">[address to be supplied]</a>}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .closing {
+    background: var(--deep);
+    color: var(--paper);
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+  .closing .wrap {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--s3);
+    padding-block: var(--section);
+  }
+  .l {
+    grid-column: 1 / 8;
+    display: grid;
+    gap: var(--s3);
+  }
+  .r {
+    grid-column: 9 / 13;
+    display: grid;
+    gap: var(--s2);
+    align-content: end;
+  }
+  .closing a {
+    color: var(--paper);
+  }
+  .closing a:hover {
+    color: var(--pen-wash);
+  }
+  .closing .mono,
+  .alt {
+    color: var(--rule);
+  }
+  .closing :global(:focus-visible) {
+    outline-color: var(--pen-wash);
+  }
+  @media (max-width: 899px) {
+    .closing .wrap {
+      grid-template-columns: 1fr;
+    }
+    .l,
+    .r {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

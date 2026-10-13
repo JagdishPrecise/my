@@ -1,0 +1,68 @@
+---
+order: 3
+title: An MCP server that lets AI act, with a person confirming
+industry: Trading and sales
+problem: Backtests, entry and exit candidates and outreach steps carried out on real tools, each confirmed by a human.
+role: Architect and developer
+client: Internal tooling [owner to confirm whether trading and sales are one context or two]
+stack: [Node.js, Model Context Protocol]
+status: In production
+emphasis: agency
+diagram: mcp-server.svg
+diagramAlt: 'An AI assistant such as Claude connects to a Node.js MCP server exposing typed tools. Every action that changes state passes through a confirmation step where a person approves it before it reaches the trading tools (scripts, backtests, signals) or the sales tools (CRM, research, outreach). Results return to the assistant.'
+featured: true
+description: Case study. A Model Context Protocol server that lets AI assistants act on trading and sales tools, with a person confirming every state-changing action.
+---
+import DiagramPanel from '../../components/DiagramPanel.astro';
+import ReviewMark from '../../components/ReviewMark.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import DataTable from '../../components/DataTable.astro';
+import Sample from '../../components/Sample.astro';
+import Columns from '../../components/Columns.astro';
+import diagram from '../../diagrams/mcp-server.svg?raw';
+
+
+## 1. Context
+
+Answering questions is the easy half of AI. The harder half is letting an assistant act on real business tools, safely. This server was built to do that for two workflows: trading analysis and sales outreach.
+
+<Placeholder>Owner to supply: which AI clients the server is used with, and whether trading and sales serve one business or two.</Placeholder>
+
+## 2. Problem
+
+Useful work on trading scripts and sales outreach involved many small, repetitive steps across tools. An assistant that could only talk about those steps saved nothing. One that could take them without a check was not acceptable.
+
+## 3. Decisions
+
+- **Expose tools, not a chat.** The server describes typed tools the assistant can call: locate a script, start a backtest, research a prospect, prepare outreach.
+- **Confirmation on every action that changes state.** The assistant proposes; a person approves; then it runs.
+- **The same pattern generalises.** Any team can point an assistant at its own CRM, ERP or internal systems the same way.
+
+<Placeholder>Owner to supply: options rejected and any limits placed on what tools may do.</Placeholder>
+
+## 4. Architecture
+
+An AI assistant connects to the MCP server. The server exposes tools for trading (locate scripts, start backtests, identify candidate entry and exit points, support trade entry and exit) and for sales (research prospects, prepare personalised outreach, automate outreach steps). Each state-changing action waits for a person to confirm.
+
+<DiagramPanel svg={diagram} alt={frontmatter.diagramAlt} />
+
+## 5. Where humans stay in the loop
+
+<ReviewMark label="Person confirms each action" />
+
+This project is the clearest case of the principle. Trade entry and exit, and every outreach send, are proposed by the assistant and confirmed by a person. The server makes the assistant capable; the confirmation keeps it accountable.
+
+## 6. What runs in production
+
+<Columns
+  a={{ title: 'Trading', items: ['Locate trading scripts', 'Start backtests', 'Identify possible entry and exit points', 'Support trade entry and exit, with a person confirming each action'] }}
+  b={{ title: 'Sales', items: ['Research prospects', 'Prepare personalised outreach', 'Automate outreach workflow steps, with a person confirming each send'] }}
+/>
+
+## 7. Outcome
+
+In use. Figures are not published here.
+
+## 8. Lessons
+
+<Placeholder>Owner to supply two or three sentences.</Placeholder>

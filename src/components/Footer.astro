@@ -1,0 +1,48 @@
+---
+import { site } from '../lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div>
+    {site.name} · {site.title}<br />
+    {site.location} · {site.timezone}
+  </div>
+  <ul class="links">
+    <li>{site.email ? <a href={`mailto:${site.email}`}>Email</a> : <a href="/contact">Email</a>}</li>
+    <li><a href={site.linkedin} rel="noopener">LinkedIn</a></li>
+    <li><a href={site.whatsapp} rel="noopener">WhatsApp</a></li>
+    <li><a href={site.cvPath}>CV (PDF)</a></li>
+    <li>© {year}</li>
+  </ul>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--s4) var(--s5);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s3);
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: var(--label);
+    color: var(--graphite);
+    line-height: 1.6;
+  }
+  .links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .links a {
+    text-decoration: none;
+    padding-block: 10px;
+    display: inline-block;
+  }
+  .links a:hover {
+    text-decoration: underline;
+  }
+</style>

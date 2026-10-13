@@ -1,0 +1,66 @@
+---
+order: 4
+title: An agent that does the routine infrastructure checks
+industry: Operations and infrastructure
+problem: Server health, logs, security scans and container checks handled by an agent that proposes fixes and applies them only after an engineer approves.
+role: Architect and developer
+client: Internal tooling
+stack: [Node.js, Python, VPS, Kubernetes]
+status: In development
+emphasis: operations
+diagram: devops-agent.svg
+diagramAlt: 'Servers, containers, logs and scans feed a diagnostics agent written in Node.js and Python. The agent produces findings and proposed remediation. Nothing is applied until an engineer approves, after which the fix is applied to the environment.'
+featured: false
+description: Case study. An AI-assisted DevOps agent, in development, that takes on routine infrastructure diagnostics and proposes fixes for an engineer to approve.
+---
+import DiagramPanel from '../../components/DiagramPanel.astro';
+import ReviewMark from '../../components/ReviewMark.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import DataTable from '../../components/DataTable.astro';
+import Sample from '../../components/Sample.astro';
+import Columns from '../../components/Columns.astro';
+import diagram from '../../diagrams/devops-agent.svg?raw';
+
+
+## 1. Context
+
+Engineers spend a share of every week on routine checks: is the server healthy, what is in the logs, has anything new appeared in a security scan, are the containers behaving. This agent is being built to take that share.
+
+## 2. Problem
+
+The checks are repetitive and easy to postpone, which is exactly how small problems become incidents. The goal is an agent that does the checking and the first pass of diagnosis, without ever applying a change on its own.
+
+## 3. Decisions
+
+- **Diagnose, propose, wait.** The agent reads, analyses and suggests. It does not act.
+- **Approval before remediation.** An engineer approves each fix before it is applied.
+- **Cover the environments actually in use:** VPS hosts, Docker and Kubernetes.
+
+## 4. Architecture
+
+Servers, containers, logs and scan output feed the agent. It produces findings and proposed remediation. An engineer reviews and approves; only then is the fix applied.
+
+<DiagramPanel svg={diagram} alt={frontmatter.diagramAlt} />
+
+## 5. Where humans stay in the loop
+
+<ReviewMark label="Engineer approves each fix" />
+
+Suggested remediation is applied only after human approval. For infrastructure this is not optional: a wrong fix applied automatically is worse than no fix.
+
+## 6. Capability areas
+
+- Server health monitoring and log analysis.
+- Security scanning and vulnerability detection.
+- Docker and Kubernetes checks.
+- Suggested remediation, applied only after human approval.
+
+## 7. Status
+
+**In active development.** This page describes what the agent is being built to do. It does not claim production results.
+
+<Placeholder>Owner to supply: which capability areas work today and which are planned.</Placeholder>
+
+## 8. Lessons
+
+<Placeholder>Owner to supply, once there is something to report.</Placeholder>

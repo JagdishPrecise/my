@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="The page you asked for is not here." path="/404">
+  <div class="nf">
+    <p class="mono">404</p>
+    <h1 class="d1">That page is not in this document.</h1>
+    <p class="lead">It may have moved, or the address may be mistyped.</p>
+    <p><a href="/">Back to the start <span class="arrow">→</span></a> &nbsp; <a href="/work">See the work</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .nf {
+    padding-block: var(--s7);
+    display: grid;
+    gap: var(--s3);
+    max-width: 62ch;
+    min-height: 50vh;
+  }
+</style>

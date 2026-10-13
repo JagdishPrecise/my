@@ -1,0 +1,77 @@
+---
+order: 1
+title: An ERP where AI reads the paperwork
+industry: Export and trade
+problem: Invoices, packing lists and bills of lading extracted, validated and reviewed by a person before they touch the ledger.
+role: Architecture lead, technology lead, AI solution designer
+client: Export business [details to supply]
+stack: [Laravel, LLM APIs, RAG]
+status: In production
+emphasis: architecture
+diagram: export-erp.svg
+diagramAlt: 'Documents from email, scans and uploads flow to an extraction step, then validation rules, then a human review step, and only then to the ERP commit. A second path indexes ERP data and company documents for plain-language questions with cited sources. A third path lets agents carry out defined ERP workflow steps. Reporting and forecasting read ERP data to assist decisions.'
+featured: true
+description: Case study. An export ERP with AI document extraction, retrieval and agents, with human review before anything is committed.
+---
+import DiagramPanel from '../../components/DiagramPanel.astro';
+import ReviewMark from '../../components/ReviewMark.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import DataTable from '../../components/DataTable.astro';
+import Sample from '../../components/Sample.astro';
+import Columns from '../../components/Columns.astro';
+import diagram from '../../diagrams/export-erp.svg?raw';
+
+
+## 1. Context
+
+<Placeholder>Owner to supply: company size, countries shipped to, approximate monthly document volume, anonymised.</Placeholder>
+
+An export-focused ERP covering sales orders, customer management, export documentation, invoicing, inventory, shipment tracking, finance and reporting. I led the architecture and the engineering team, and designed how AI fits into daily export operations without taking decisions away from people.
+
+## 2. Problem
+
+Export operations run on documents: invoices, packing lists, purchase orders, transport documents and bills of lading. Each was keyed by hand into the ERP, slowly and with errors that surfaced at the worst moment, at customs or at payment.
+
+## 3. Decisions
+
+- **Extract into structured fields, then validate, then let a person approve.** Nothing reaches the ledger on the model's say-so.
+- **Retrieval over company documents and ERP knowledge**, so staff can ask questions in plain language instead of searching folders.
+- **Agents for defined workflow steps**, not open-ended automation.
+- **Reporting, analysis and demand forecasting** assist decisions rather than make them.
+
+<Placeholder>Owner to supply: options considered and rejected, and why (for example fully automatic commit, a separate AI tool outside the ERP, single-vendor lock-in).</Placeholder>
+
+## 4. Architecture
+
+Documents enter from email, scans and uploads. The extraction step produces structured fields and a summary. Validation rules check totals, references and dates. A person reviews the result and approves it. Only then does the ERP commit the order, invoice or shipment. A second path indexes ERP data and company documents for plain-language questions. A third lets agents carry out defined workflow steps.
+
+<DiagramPanel svg={diagram} alt={frontmatter.diagramAlt} />
+
+## 5. Where humans stay in the loop
+
+<ReviewMark label="Reviewed before commit" />
+
+Extracted data is committed only after a person approves it. Validation rules catch what they can; a person catches the rest. Forecasts inform decisions; they do not make them. The review step is a feature of the design, not a fallback.
+
+## 6. What runs in production
+
+- Document extraction and generation for invoices, packing lists, purchase orders, transport documents and bills of lading.
+- Structured field extraction, with document outputs and summaries generated from the extracted data.
+- Validation rules and a human review step before extracted data is committed.
+- Retrieval over company documents and ERP knowledge, so staff can ask questions in plain language.
+- Agents that carry out ERP workflow steps.
+- AI-assisted reporting, data analysis and demand forecasting.
+
+<DataTable bleed={false} head={['Document', 'Extracted', 'Generated']} rows={[['Commercial invoice', 'Yes', 'Yes'], ['Packing list', 'Yes', 'Yes'], ['Purchase order', 'Yes', 'Yes'], ['Transport documents', 'Yes', 'Yes'], ['Bill of lading', 'Yes', 'Yes']]} />
+
+<Placeholder>Table derived from the CV. Owner to confirm which documents are extracted, generated or both.</Placeholder>
+
+## 7. Outcome
+
+Running in daily use. Figures on volume, time saved and accuracy are not published here.
+
+<Placeholder>If real, verifiable figures exist, they replace the line above. Nothing is estimated.</Placeholder>
+
+## 8. Lessons
+
+<Placeholder>Owner to supply two or three sentences: what you would do differently, what surprised you.</Placeholder>

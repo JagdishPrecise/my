@@ -1,0 +1,13 @@
+<svg viewBox="0 0 1000 300" font-size="12" fill="none" stroke="currentColor" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arr4" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L8 4L0 8z" fill="currentColor" stroke="none"/></marker></defs>
+<g stroke="var(--graphite)" stroke-dasharray="4 3"><rect x="20" y="40" width="180" height="60"/><rect x="20" y="200" width="180" height="60"/></g>
+<g class="draw"><rect x="260" y="110" width="200" height="60"/><rect x="520" y="110" width="200" height="60"/></g>
+<rect x="780" y="110" width="200" height="60" stroke="var(--pen)" fill="var(--pen-wash)"/>
+<g class="draw" marker-end="url(#arr4)"><path d="M200 70l60 50"/><path d="M200 230l60-50"/><path d="M460 140h60"/><path d="M720 140h60"/><path d="M880 170v70H110v-10" stroke="var(--graphite)"/></g>
+<g fill="currentColor" stroke="none" text-anchor="middle">
+<text x="110" y="66">Servers · containers</text><text x="110" y="84" font-size="11" fill="var(--graphite)">VPS · Docker · Kubernetes</text>
+<text x="110" y="226">Logs · scans</text><text x="110" y="244" font-size="11" fill="var(--graphite)">health · security</text>
+<text x="360" y="136">Diagnostics agent</text><text x="360" y="154" font-size="11" fill="var(--graphite)">Node.js · Python</text>
+<text x="620" y="136">Findings + remediation</text><text x="620" y="154" font-size="11" fill="var(--graphite)">proposed, not applied</text>
+<text x="880" y="136" fill="var(--pen)">☑ Engineer approves</text><text x="880" y="154" font-size="11" fill="var(--pen)">then the fix is applied</text>
+</g></svg>

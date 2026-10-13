@@ -1,0 +1,29 @@
+---
+/** A set-in-paper-2 block showing the shape of an AI answer with its citation. Illustrative, not a real transcript. */
+---
+
+<figure class="sample">
+  <div class="q"><span class="mono">Buyer</span><p><slot name="q" /></p></div>
+  <div class="a"><span class="mono">Assistant</span><p><slot name="a" /></p><p class="src"><slot name="src" /></p></div>
+  <figcaption class="mono">Illustrative exchange, not a transcript</figcaption>
+</figure>
+
+<style>
+  .sample {
+    background: var(--paper-2);
+    padding: var(--s3);
+    display: grid;
+    gap: var(--s2);
+    max-width: 68ch;
+  }
+  .q,
+  .a {
+    display: grid;
+    gap: 6px;
+  }
+  .src {
+    font-family: var(--mono);
+    font-size: var(--label);
+    color: var(--pen);
+  }
+</style>

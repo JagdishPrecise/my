@@ -1,0 +1,38 @@
+---
+interface Props {
+  items: Array<[string, string]>;
+}
+const { items } = Astro.props;
+---
+
+<dl class="meta">
+  {
+    items.map(([k, v]) => (
+      <>
+        <dt>{k}</dt>
+        <dd>{v}</dd>
+      </>
+    ))
+  }
+</dl>
+
+<style>
+  .meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--s1) var(--s2);
+  }
+  dt {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    padding-top: 3px;
+  }
+  dd {
+    margin: 0;
+    font-size: var(--small);
+    line-height: 1.5;
+  }
+</style>

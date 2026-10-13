@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpecLayout from '../layouts/SpecLayout.astro';
+import MetaList from '../components/MetaList.astro';
+import Portrait from '../components/Portrait.astro';
+import ReviewMark from '../components/ReviewMark.astro';
+import WorkRow from '../components/WorkRow.astro';
+import Numerals from '../components/Numerals.astro';
+import MethodSteps from '../components/MethodSteps.astro';
+import ClosingCall from '../components/ClosingCall.astro';
+import { site } from '../lib/site';
+import thumb from '../diagrams/thumb-erp.svg?raw';
+
+const featured = (await getCollection('work', ({ data }) => data.featured)).sort((a, b) => a.data.order - b.data.order);
+const bookHref = site.calendly ?? '/contact';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: 'AI Solutions Architect and CTO',
+  address: { '@type': 'PostalAddress', addressLocality: 'Ahmedabad', addressCountry: 'IN' },
+  sameAs: [site.linkedin],
+  url: Astro.site?.toString(),
+};
+---
+
+<BaseLayout
+  title="Home"
+  description="Jagdish Chaudhary designs and delivers applied AI for operational businesses: document extraction, retrieval and agents inside the ERP, CRM and tools you already use."
+  path="/"
+  jsonLd={jsonLd}
+>
+  <SpecLayout id="opener">
+    <Fragment slot="margin">
+      <MetaList items={[['Role', 'AI Solutions Architect · CTO'], ['Base', 'Ahmedabad, India · IST'], ['Work', 'Applied AI, enterprise systems, engineering leadership']]} />
+      <div class="portrait-slot"><Portrait size="sm" /></div>
+    </Fragment>
+    <div class="stack">
+      <h1 class="d1">{site.tagline}</h1>
+      <p class="lead">
+        I design and deliver applied AI for operational businesses: document extraction, retrieval and agents connected to the ERP, CRM and tools you already use. One accountable technical lead from the first discovery call to production.
+      </p>
+      <p class="actions">
+        <a class="cta" href={bookHref} {...site.calendly ? { target: '_blank', rel: 'noopener' } : {}}>Book a call</a>
+        <a href="/work">See the work <span class="arrow">→</span></a>
+      </p>
+    </div>
+  </SpecLayout>
+
+  <SpecLayout id="bring" label="What I bring">
+    <dl class="proofs">
+      <div>
+        <dt>One accountable lead</dt>
+        <dd>Discovery, architecture, delivery and production support stay with the same person instead of being passed between teams.</dd>
+      </div>
+      <div>
+        <dt>AI in production</dt>
+        <dd>Document extraction, RAG, agents and forecasting are working inside a live enterprise ERP, not only in prototypes.</dd>
+      </div>
+      <div>
+        <dt>Business-first scoping</dt>
+        <dd>AI use cases are ranked by feasibility, data readiness, business value and expected ROI before any build starts.</dd>
+      </div>
+      <div>
+        <dt><ReviewMark label="Humans stay in the loop" /></dt>
+        <dd>Validation rules and human approval wherever AI output affects a decision. Access control and data privacy designed in, and an architecture your own team can understand and own.</dd>
+      </div>
+    </dl>
+  </SpecLayout>
+
+  <section class="work" id="work" aria-labelledby="work-h">
+    <div class="seehead">
+      <h2 id="work-h" class="mono">Selected work</h2>
+      <a href="/work" class="mono-s">All work →</a>
+    </div>
+    <div class="rows">
+      {
+        featured.map((e, i) => (
+          <WorkRow
+            href={`/work/${e.id}`}
+            industry={e.data.industry}
+            title={e.data.title}
+            problem={e.data.problem}
+            stack={e.data.stack}
+            status={e.data.status === 'In production' ? e.data.status : undefined}
+            expanded={i === 0}
+          >
+            {i === 0 && <Fragment set:html={thumb} />}
+          </WorkRow>
+        ))
+      }
+    </div>
+  </section>
+
+  <SpecLayout id="how" label="How I work">
+    <div class="stack">
+      <Numerals />
+      <MethodSteps />
+      <p><a href="/about">More about how I work <span class="arrow">→</span></a></p>
+    </div>
+  </SpecLayout>
+
+  <ClosingCall slot="after" />
+</BaseLayout>
+
+<style>
+  .stack {
+    display: grid;
+    gap: var(--s4);
+  }
+  .actions {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .portrait-slot {
+    margin-top: var(--s3);
+  }
+  .proofs > div {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--s3);
+    padding-block: var(--s3);
+    border-top: 1px solid var(--rule);
+  }
+  .proofs > div:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .proofs dt {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    padding-top: 4px;
+  }
+  .proofs dd {
+    margin: 0;
+    max-width: 60ch;
+  }
+  .work {
+    padding-block: var(--section);
+    border-bottom: 1px solid var(--rule);
+  }
+  .seehead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s3);
+    padding-bottom: var(--s3);
+  }
+  .seehead a {
+    text-decoration: none;
+  }
+  .seehead a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 899px) {
+    .proofs > div {
+      grid-template-columns: 1fr;
+      gap: var(--s1);
+    }
+    .seehead {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--s1);
+    }
+  }
+</style>

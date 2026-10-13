@@ -1,0 +1,234 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: var(--gutter);
+  padding-block: 0;
+}
+::selection {
+  background: var(--pen-wash);
+}
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  margin: 0;
+  text-wrap: balance;
+}
+p,
+ul,
+ol,
+dl,
+figure {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.12s;
+}
+a:hover {
+  color: var(--pen);
+}
+:focus-visible {
+  outline: 2px solid var(--pen);
+  outline-offset: 2px;
+}
+b,
+strong {
+  font-weight: 600;
+}
+
+/* layout */
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+}
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--paper);
+  padding: 8px 12px;
+  font-family: var(--mono);
+  z-index: 10;
+}
+.skip:focus {
+  left: 8px;
+}
+
+/* type utilities */
+.serif {
+  font-family: var(--serif);
+}
+.d1 {
+  font-family: var(--serif);
+  font-size: var(--d1);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.d2 {
+  font-family: var(--serif);
+  font-size: var(--d2);
+  line-height: 1.1;
+}
+.h {
+  font-family: var(--serif);
+  font-size: var(--h);
+  line-height: 1.2;
+}
+.lead {
+  font-size: var(--lead);
+  line-height: 1.45;
+  max-width: 60ch;
+}
+.body {
+  max-width: 68ch;
+}
+.mono {
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  font-weight: 400;
+}
+.mono-s {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--graphite);
+}
+.arrow {
+  display: inline-block;
+  transition: transform 0.12s;
+}
+a:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* primary action: the one bordered element on the site */
+.cta {
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  display: inline-block;
+  min-height: 44px;
+  line-height: 22px;
+  transition:
+    border-color 0.12s,
+    color 0.12s,
+    background 0.12s;
+}
+.cta:hover {
+  border-color: var(--pen);
+  color: var(--pen);
+}
+.cta:active {
+  background: var(--pen-wash);
+}
+.cta.paper {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+.cta.paper:hover {
+  border-color: var(--pen-wash);
+  color: var(--pen-wash);
+}
+
+/* placeholder for content the owner has not supplied yet */
+.ph {
+  color: var(--graphite);
+  border-left: 2px solid var(--rule);
+  padding-left: var(--s2);
+  font-size: var(--small);
+  max-width: 68ch;
+}
+.ph::before {
+  content: 'Placeholder · ';
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* prose inside case studies (rendered Markdown) */
+.prose {
+  max-width: 68ch;
+  display: grid;
+  gap: var(--s2);
+}
+.prose ul,
+.prose ol {
+  padding-left: 20px;
+  display: grid;
+  gap: var(--s1);
+}
+.prose li::marker {
+  color: var(--graphite);
+}
+.prose h2 {
+  font-family: var(--serif);
+  font-size: var(--h);
+  line-height: 1.2;
+  margin-top: var(--s4);
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+/* motion: one page-load rise, nothing else */
+@media (prefers-reduced-motion: no-preference) {
+  main {
+    animation: rise 0.16s ease-out both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* full-bleed from inside the content column (8 of 12 cols): spans back over the margin column */
+.bleed {
+  margin-inline-start: calc(-1 * (100% + var(--s3)) / 2);
+  width: calc(1.5 * (100% + var(--s3)) - var(--s3));
+  max-width: none;
+}
+@media (max-width: 899px) {
+  .bleed {
+    margin-inline-start: 0;
+    width: 100%;
+  }
+}

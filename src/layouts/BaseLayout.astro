@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/500.css';
+import '@fontsource/instrument-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import Letterhead from '../components/Letterhead.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path of the current page, used for canonical and nav state. */
+  path: string;
+  jsonLd?: Record<string, unknown>;
+}
+const { title, description, path, jsonLd } = Astro.props;
+const canonical = new URL(path === '/' ? '/' : path, Astro.site);
+const fullTitle = path === '/' ? `${site.name}, ${site.title}` : `${title} · ${site.name}`;
+const ogImage = new URL('/og.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f2f1ed" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="wrap">
+      <Letterhead path={path} />
+      <main id="main">
+        <slot />
+      </main>
+      <slot name="after" />
+      <Footer />
+    </div>
+  </body>
+</html>

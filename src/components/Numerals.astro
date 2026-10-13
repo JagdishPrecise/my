@@ -1,0 +1,49 @@
+---
+import { numerals } from '../lib/site';
+---
+
+<ul class="nums" aria-label="Scale and experience">
+  {
+    numerals.map(({ n, label }) => (
+      <li>
+        <span class="n">{n}</span>
+        <span class="c">{label}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .nums {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s3);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding-block: var(--s4);
+    list-style: none;
+    padding-inline: 0;
+  }
+  li {
+    display: grid;
+    gap: 12px;
+  }
+  .n {
+    font-family: var(--serif);
+    font-size: var(--d2);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .c {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+  @media (max-width: 899px) {
+    .nums {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
