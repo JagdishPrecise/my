@@ -46,9 +46,11 @@ Still open from this round (can be answered any time before Gate 3):
 
 ## Blocking item
 
-**Gate 5 authorisation** to begin implementation.
+None. Implementation authorised at Gate 5 (2026-10-13). Remaining items below are content, not decisions.
 
 ## Resolved
+
+- Gate 5: implementation authorised 2026-10-13 with placeholders for email, Calendly URL, domain, portrait, and per-study facts.
 
 - Gate 4 approved 2026-10-13: Astro static output; Cloudflare Pages or Netlify free tier (domain still to be named); no analytics; content as Markdown files in the repository.
 
